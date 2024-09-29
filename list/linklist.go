@@ -8,6 +8,11 @@ type LinkList[T any] struct {
 	tail *common.Node[T] //尾节点
 }
 
+func NewLinkList[T any]() *LinkList[T] {
+	list := LinkList[T]{}
+	return &list
+}
+
 func (l *LinkList[T]) Size() int {
 	//TODO implement me
 	panic("implement me")
@@ -38,7 +43,7 @@ func (l *LinkList[T]) Clear() {
 	panic("implement me")
 }
 
-func (l *LinkList[T]) Delete(i int) error {
+func (l *LinkList[T]) Delete(i int) (T, error) {
 	//TODO implement me
 	panic("implement me")
 }
@@ -51,9 +56,4 @@ func (l *LinkList[T]) String() string {
 func (l *LinkList[T]) Iterator() Iterator[T] {
 	//TODO implement me
 	panic("implement me")
-}
-
-func NewLinkList[T any]() List[T] {
-	list := LinkList[T]{}
-	return &list
 }

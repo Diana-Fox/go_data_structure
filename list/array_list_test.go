@@ -12,7 +12,6 @@ type ListTestSuit struct {
 
 // 测试插入方法
 func (s *ListTestSuit) TestListInsert() {
-
 }
 
 func TestListSuit(t *testing.T) {

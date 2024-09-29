@@ -1,5 +1,6 @@
 package list
 
+// List 定义一个list
 type List[T any] interface {
 	Size() int
 	Get(index int) (T, error)
@@ -7,7 +8,7 @@ type List[T any] interface {
 	Insert(index int, v T) error
 	Append(v T)
 	Clear()
-	Delete(i int) error
+	Delete(i int) (T, error)
 	String() string
 	Iterator() Iterator[T]
 }

@@ -5,13 +5,14 @@ import (
 )
 
 type ArrayList[T any] struct {
+	cap  int
 	size int
 	data []T //由于go中相关结构为切片实现，切片已经是一个完整数据结构，包含阔缩容等机制
 }
 
 //无参,默认大小为10
 
-func NewArrayList[T any]() List[T] {
+func NewArrayList[T any]() *ArrayList[T] {
 	list := ArrayList[T]{
 		size: 0,
 		data: make([]T, 10),
@@ -26,6 +27,9 @@ func (a *ArrayList[T]) checkIsFull() {
 		copy(newData, a.data)
 		a.data = newData
 	}
+}
+func (a *ArrayList[T]) GetCapSize() int {
+	return a.cap
 }
 func (a *ArrayList[T]) Size() int {
 	return a.size
@@ -70,10 +74,11 @@ func (a *ArrayList[T]) Clear() {
 	a.data = make([]T, 0)
 }
 
-func (a *ArrayList[T]) Delete(i int) error { //删除
+func (a *ArrayList[T]) Delete(i int) (T, error) { //删除
 	a.size--
+	value := a.data[i]
 	a.data = append(a.data[:i], a.data[i+1:]...)
-	return nil
+	return value, nil
 }
 
 func (a *ArrayList[T]) String() string {

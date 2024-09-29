@@ -23,7 +23,8 @@ func (a *ArrayListIterator[T]) Next() (T, error) {
 }
 
 func (a *ArrayListIterator[T]) Remove() error {
-	return a.list.Delete(a.currentIndex)
+	_, err := a.list.Delete(a.currentIndex)
+	return err
 }
 
 func (a *ArrayListIterator[T]) GetIndex() int {
