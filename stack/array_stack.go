@@ -31,9 +31,9 @@ func (a *ArrayStack[T]) Pop() T {
 	return value
 }
 
-// 每次都追加到最后一个
+// 每次都追加到第一个
 func (a *ArrayStack[T]) Push(value T) {
-	a.date.Append(value)
+	a.date.Insert(0, value)
 }
 
 func (a *ArrayStack[T]) IsEmpty() bool {
