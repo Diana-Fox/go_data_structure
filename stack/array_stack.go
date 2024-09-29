@@ -24,7 +24,7 @@ func (a *ArrayStack[T]) Size() int {
 
 // 每次都删除开头第一个
 func (a *ArrayStack[T]) Pop() T {
-	value, _ := a.date.Delete(0) //删除第一个
+	value, _ := a.date.Delete(a.Size() - 1) //删除最后
 	return value
 }
 

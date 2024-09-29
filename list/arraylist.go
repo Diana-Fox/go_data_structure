@@ -75,6 +75,10 @@ func (a *ArrayList[T]) Clear() {
 }
 
 func (a *ArrayList[T]) Delete(i int) (T, error) { //删除
+	var v T
+	if a.size < 0 {
+		return v, errors.New("index out of range")
+	}
 	a.size--
 	value := a.data[i]
 	a.data = append(a.data[:i], a.data[i+1:]...)
