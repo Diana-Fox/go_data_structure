@@ -13,17 +13,17 @@ func (l *LinkList[T]) Size() int {
 	panic("implement me")
 }
 
-func (l *LinkList[T]) Get(i int) (T, error) {
+func (l *LinkList[T]) Get(index int) (T, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (l *LinkList[T]) Set(i int, v T) error {
+func (l *LinkList[T]) Set(index int, v T) error {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (l *LinkList[T]) Insert(i int, v T) error {
+func (l *LinkList[T]) Insert(index int, v T) error {
 	//TODO implement me
 	panic("implement me")
 }
@@ -44,6 +44,11 @@ func (l *LinkList[T]) Delete(i int) error {
 }
 
 func (l *LinkList[T]) String() string {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (l *LinkList[T]) Iterator() Iterator[T] {
 	//TODO implement me
 	panic("implement me")
 }

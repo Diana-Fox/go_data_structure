@@ -2,7 +2,6 @@ package list
 
 import (
 	"errors"
-	"fmt"
 )
 
 type ArrayList[T any] struct {
@@ -10,16 +9,24 @@ type ArrayList[T any] struct {
 	data []T //由于go中相关结构为切片实现，切片已经是一个完整数据结构，包含阔缩容等机制
 }
 
-//无参,默认大小为
+//无参,默认大小为10
 
 func NewArrayList[T any]() List[T] {
 	list := ArrayList[T]{
 		size: 0,
-		data: make([]T, 0),
+		data: make([]T, 10),
 	}
 	return &list
 }
 
+// 只有数组需要
+func (a *ArrayList[T]) checkIsFull() {
+	if a.size == cap(a.data) { //扩容
+		newData := make([]T, a.size, a.size*2) //要先开辟基础内存
+		copy(newData, a.data)
+		a.data = newData
+	}
+}
 func (a *ArrayList[T]) Size() int {
 	return a.size
 }
@@ -31,9 +38,18 @@ func (a *ArrayList[T]) Get(i int) (T, error) {
 	return a.data[i], nil
 }
 
-func (a *ArrayList[T]) Insert(i int, v T) error {
-	//TODO implement me
-	panic("implement me")
+func (a *ArrayList[T]) Insert(index int, v T) error {
+	if index < 0 || index >= a.size {
+		return errors.New("index out of range")
+	}
+	a.checkIsFull()
+	a.data = a.data[:a.size+1] //go的特性，需要先多开辟一个空间
+	for i := a.size; i > index; i-- {
+		a.data[i] = a.data[i-1]
+	}
+	a.data[index] = v
+	a.size++
+	return nil
 }
 
 func (a *ArrayList[T]) Set(i int, v T) error {
@@ -42,11 +58,6 @@ func (a *ArrayList[T]) Set(i int, v T) error {
 	}
 	a.data[i] = v
 	return nil
-}
-
-func (a *ArrayList[T]) Index(i int, v T) error {
-	//TODO implement me
-	panic("implement me")
 }
 
 func (a *ArrayList[T]) Append(v T) {
@@ -59,17 +70,23 @@ func (a *ArrayList[T]) Clear() {
 	a.data = make([]T, 0)
 }
 
-func (a *ArrayList[T]) Delete(i int) error {
-	//TODO implement me
-	panic("implement me")
+func (a *ArrayList[T]) Delete(i int) error { //删除
+	a.size--
+	a.data = append(a.data[:i], a.data[i+1:]...)
+	return nil
 }
 
 func (a *ArrayList[T]) String() string {
-	//return fmt.Sprintf(a.data)
 	str := "{"
-	for _, v := range a.data {
-		str = str + fmt.Sprintf("%s,", v) //默认把所有值都按字符串输出
-	}
+	//for _, v := range a.data {
+	//	str = str + fmt.Sprintf("%s,", strconv.Itoa(v)) //默认把所有值都按字符串输出
+	//}
 	str = str + "}"
 	return str
+}
+
+// 迭代器
+func (a *ArrayList[T]) Iterator() Iterator[T] {
+	it := new(ArrayListIterator[T])
+	return it
 }
