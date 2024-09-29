@@ -1,8 +1,8 @@
 package list
 
 import (
-	"github.com/Diana-Fox/go_data_structure/common"
-	"github.com/Diana-Fox/go_data_structure/iterator"
+	"github.com/Diana-Fox/go_data_structure/data_structure/common"
+	"github.com/Diana-Fox/go_data_structure/data_structure/iterator"
 )
 
 type LinkList[T any] struct {

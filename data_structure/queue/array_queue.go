@@ -1,6 +1,8 @@
 package queue
 
-import "github.com/Diana-Fox/go_data_structure/list"
+import (
+	"github.com/Diana-Fox/go_data_structure/data_structure/list"
+)
 
 var q Queue[int] = &ArrayQueue[int]{}
 

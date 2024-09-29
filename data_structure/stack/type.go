@@ -1,6 +1,8 @@
 package stack
 
-import "github.com/Diana-Fox/go_data_structure/iterator"
+import (
+	"github.com/Diana-Fox/go_data_structure/data_structure/iterator"
+)
 
 // Stack 定义一个栈
 type Stack[T any] interface {

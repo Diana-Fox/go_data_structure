@@ -1,8 +1,8 @@
 package stack
 
 import (
-	"github.com/Diana-Fox/go_data_structure/iterator"
-	"github.com/Diana-Fox/go_data_structure/list"
+	"github.com/Diana-Fox/go_data_structure/data_structure/iterator"
+	"github.com/Diana-Fox/go_data_structure/data_structure/list"
 )
 
 // ArrayStack 数组类型的栈
