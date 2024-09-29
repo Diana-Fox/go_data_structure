@@ -1,6 +1,9 @@
 package list
 
-import "github.com/Diana-Fox/go_data_structure/common"
+import (
+	"github.com/Diana-Fox/go_data_structure/common"
+	"github.com/Diana-Fox/go_data_structure/iterator"
+)
 
 type LinkList[T any] struct {
 	size int
@@ -53,7 +56,7 @@ func (l *LinkList[T]) String() string {
 	panic("implement me")
 }
 
-func (l *LinkList[T]) Iterator() Iterator[T] {
+func (l *LinkList[T]) Iterator() iterator.Iterator[T] {
 	//TODO implement me
 	panic("implement me")
 }

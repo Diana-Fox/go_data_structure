@@ -1,6 +1,9 @@
 package stack
 
-import "github.com/Diana-Fox/go_data_structure/list"
+import (
+	"github.com/Diana-Fox/go_data_structure/iterator"
+	"github.com/Diana-Fox/go_data_structure/list"
+)
 
 // ArrayStack 数组类型的栈
 type ArrayStack[T any] struct {
@@ -40,4 +43,9 @@ func (a *ArrayStack[T]) IsEmpty() bool {
 // go的切片的一些特性，导致不是很完美
 func (a *ArrayStack[T]) IsFull() bool {
 	return a.date.Size() == a.date.GetCapSize()
+}
+
+// 直接用list的迭代器就可以了
+func (a *ArrayStack[T]) Iterator() iterator.Iterator[T] {
+	return a.date.Iterator()
 }

@@ -2,6 +2,7 @@ package list
 
 import (
 	"errors"
+	"github.com/Diana-Fox/go_data_structure/iterator"
 )
 
 type ArrayList[T any] struct {
@@ -95,7 +96,7 @@ func (a *ArrayList[T]) String() string {
 }
 
 // 迭代器
-func (a *ArrayList[T]) Iterator() Iterator[T] {
+func (a *ArrayList[T]) Iterator() iterator.Iterator[T] {
 	it := new(ArrayListIterator[T])
 	return it
 }
