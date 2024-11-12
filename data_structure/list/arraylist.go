@@ -16,7 +16,7 @@ type ArrayList[T any] struct {
 func NewArrayList[T any]() *ArrayList[T] {
 	list := ArrayList[T]{
 		size: 0,
-		data: make([]T, 10),
+		data: make([]T, 0),
 	}
 	return &list
 }

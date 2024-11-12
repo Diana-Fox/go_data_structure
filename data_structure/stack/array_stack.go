@@ -26,14 +26,13 @@ func (a *ArrayStack[T]) Size() int {
 }
 
 // 每次都删除开头第一个
-func (a *ArrayStack[T]) Pop() T {
-	value, _ := a.date.Delete(a.Size() - 1) //删除最后
-	return value
+func (a *ArrayStack[T]) Pop() (T, error) {
+	return a.date.Delete(a.Size() - 1) //删除最后
 }
 
 // 每次都追加到第一个
 func (a *ArrayStack[T]) Push(value T) {
-	a.date.Insert(0, value)
+	a.date.Append(value)
 }
 
 func (a *ArrayStack[T]) IsEmpty() bool {
